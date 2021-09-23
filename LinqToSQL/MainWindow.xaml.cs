@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Configuration;
 
 namespace LinqToSQL
 {
@@ -22,7 +23,13 @@ namespace LinqToSQL
     {
         public MainWindow()
         {
+            LinqToSQLDataClassesDataContext dataContext;
             InitializeComponent();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["LinqToSQL.Properties.Settings.linqDBConnectionString"].ConnectionString;
+
+            dataContext = new LinqToSQLDataClassesDataContext(connectionString);
+
         }
     }
 }
